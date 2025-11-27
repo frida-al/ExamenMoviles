@@ -8,26 +8,22 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.app.baseexamen.ui.organisms.CardList
 
-@Suppress("ktlint:standard:function-naming")
 @Composable
 fun HomeScreen(
     navController: NavController,
-    modifier: Modifier = Modifier,
-){
-    Scaffold { _ ->
-        Box(
-            modifier =
-                modifier
-                    .fillMaxSize(),
-            contentAlignment = Alignment.Center,
-        ) {
-            Text(
-                text = "🚧 En construcción 🚧",
-                color = MaterialTheme.colorScheme.onSurface,
-                style = MaterialTheme.typography.headlineMedium,
-            )
+    viewModel: HomeViewModel = hiltViewModel(),
+    //onNavigateToDetail: (String) -> Unit
+) {
+    val countries = viewModel.countries
+
+    CardList(
+        items = countries,
+        onCardClick = { country ->
+           // onNavigateToDetail(country.country)
         }
-    }
+    )
 }

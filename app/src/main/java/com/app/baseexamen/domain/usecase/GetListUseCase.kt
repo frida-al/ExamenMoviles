@@ -1,4 +1,4 @@
 package com.app.baseexamen.domain.usecase
 
-class BaseUseCase {
+class GetListUseCase {
 }

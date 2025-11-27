@@ -6,6 +6,9 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
+val apiKey: String = project.findProperty("API_KEY") as String? ?: ""
+
+
 android {
     namespace = "com.app.baseexamen"
     compileSdk = 36
@@ -16,7 +19,7 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
+        buildConfigField("String", "API_KEY", "\"$apiKey\"")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -38,6 +41,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -57,7 +61,6 @@ dependencies {
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging.interceptor)
     implementation(libs.gson)
-    implementation(libs.persistent.cookie.jar)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
