@@ -19,19 +19,21 @@ class HomeViewModel @Inject constructor(
     private val getCountryDetailUseCase: GetByCountryUseCase,
 ) : ViewModel() {
     val countries = listOf(
-        CountryName("mexico", "🇲🇽"),
-        CountryName("canada", "🇨🇦"),
-        CountryName("brazil", "🇧🇷"),
-        CountryName("argentina", "🇦🇷"),
-        CountryName("spain", "🇪🇸"),
-        CountryName("france", "🇫🇷"),
-        CountryName("germany", "🇩🇪"),
-        CountryName("italy", "🇮🇹"),
-        CountryName("japan", "🇯🇵"),
-        CountryName("china", "🇨🇳"),
-        CountryName("india", "🇮🇳"),
-        CountryName("australia", "🇦🇺"),
+        CountryName("kiribati", "🇰🇮"),
+        CountryName("nauru", "🇳🇷"),
+        CountryName("palau", "🇵🇼"),
+        CountryName("togo", "🇹🇬"),
+        CountryName("mali", "🇲🇱"),
+        CountryName("benin", "🇧🇯"),
+        CountryName("burundi", "🇧🇮"),
+        CountryName("djibouti", "🇩🇯"),
+        CountryName("eritrea", "🇪🇷"),
+        CountryName("seychelles", "🇸🇨"),
+        CountryName("comoros", "🇰🇲"),
+        CountryName("botswana", "🇧🇼"),
+        CountryName("lesotho", "🇱🇸")
     )
+
 
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()

@@ -33,7 +33,6 @@ fun DetailScreen(
     country: String,
     viewModel: DetailViewModel = hiltViewModel()
 ) {
-    // Llamada al ViewModel al iniciar
     LaunchedEffect(country) {
         viewModel.loadCountry(country)
     }
@@ -51,6 +50,14 @@ fun DetailScreen(
                     verticalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.fillMaxSize()
                 ) {
+                    item {
+                        Text(
+                            text = countryDetail.country.capitalize(),
+                            style = MaterialTheme.typography.headlineMedium,
+                            modifier = Modifier.padding(16.dp)
+                        )
+                    }
+
                     items(countryDetail.cases) { case ->
                         CaseCard(case)
                     }
