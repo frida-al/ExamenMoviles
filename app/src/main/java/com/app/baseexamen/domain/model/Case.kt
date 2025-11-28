@@ -13,5 +13,6 @@ data class CountryData(
 )
 
 data class CountryName(
-    val name: String
+    val name: String,
+    val flag: String,
 )

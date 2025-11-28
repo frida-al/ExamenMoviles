@@ -12,13 +12,23 @@ class GetByCountryUseCase @Inject constructor(
 ) {
     operator fun invoke(country: String): Flow<Result<CountryData>> =
         flow {
-            try {
-                emit(Result.Loading)
-                val response = repository.getByCountry(country)
-                emit(Result.Success(response))
-            } catch (e: Exception) {
-                emit(Result.Error(e))
+            emit(Result.Loading)
+
+                        try {
+                            val response = repository.getByCountry(country)
+                            val filteredCases = response.cases.filter {
+                                it.total != 0 || it.new != 0
+                            }
+
+                            val cleanedData = response.copy(
+                                cases = filteredCases
+                            )
+
+                            emit(Result.Success(cleanedData))
+                        } catch (e: Exception) {
+                            emit(Result.Error(e))
+                        }
+                    }
             }
-        }
-    }
+
 
