@@ -27,19 +27,12 @@ class MainActivity : ComponentActivity() {
                 val currentBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentRoute = currentBackStackEntry?.destination?.route
 
-                // Si quieres controlar qué rutas muestran el bottom bar, hazlo aquí:
-                val showBottomBar = when (currentRoute) {
-                    "login",
-                    "splash" -> false
-                    else -> true
-                }
 
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
-                        if (showBottomBar) {
                             BaseNavigationBar(navController)
-                        }
+
                     }
                 ) { innerPadding ->
                     NavGraph(

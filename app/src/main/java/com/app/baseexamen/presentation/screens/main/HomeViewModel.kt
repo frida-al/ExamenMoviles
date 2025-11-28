@@ -18,29 +18,23 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val getCountryDetailUseCase: GetByCountryUseCase,
 ) : ViewModel() {
-        val countries = listOf(
-            CountryName("Mexico"),
-            CountryName("Canada"),
-            CountryName("USA"),
-            CountryName("Brazil"),
-            CountryName("Argentina"),
-            CountryName("Spain"),
-            CountryName("France"),
-            CountryName("Germany"),
-            CountryName("Italy"),
-            CountryName("Japan"),
-            CountryName("China"),
-            CountryName("India"),
-            CountryName("Australia"),
-            CountryName("UK"),
-            CountryName("South Africa")
-        )
+    val countries = listOf(
+        CountryName("mexico", "🇲🇽"),
+        CountryName("canada", "🇨🇦"),
+        CountryName("brazil", "🇧🇷"),
+        CountryName("argentina", "🇦🇷"),
+        CountryName("spain", "🇪🇸"),
+        CountryName("france", "🇫🇷"),
+        CountryName("germany", "🇩🇪"),
+        CountryName("italy", "🇮🇹"),
+        CountryName("japan", "🇯🇵"),
+        CountryName("china", "🇨🇳"),
+        CountryName("india", "🇮🇳"),
+        CountryName("australia", "🇦🇺"),
+    )
+
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
-
-    init {
-        loadCountry("mexico")
-    }
 
     fun loadCountry(country: String) {
         viewModelScope.launch {
@@ -48,6 +42,7 @@ class HomeViewModel @Inject constructor(
                 _uiState.update { state ->
                     when (result) {
                         is Result.Loading -> {
+                            Log.d("HomeVM", "pais: $country")
                             state.copy(
                                 isLoading = true,
                                 error = null
@@ -74,6 +69,7 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
+
 
 
 }

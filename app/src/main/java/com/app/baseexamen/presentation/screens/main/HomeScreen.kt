@@ -18,11 +18,15 @@ fun HomeScreen(
     navController: NavController,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
-    val countries = viewModel.countries
+    Scaffold { _ ->
+        val countries = viewModel.countries
 
-    CardList(
-        items = countries,
-        onCardClick = { country ->
-            navController.navigate(Screen.Detail.createRoute(country.name))        }
-    )
+        CardList(
+            items = countries,
+            onCardClick = { country ->
+                viewModel.loadCountry(country.name)
+                navController.navigate(Screen.Detail.createRoute(country.name))
+            }
+        )
+    }
 }

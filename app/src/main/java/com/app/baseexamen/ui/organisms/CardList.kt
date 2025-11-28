@@ -31,8 +31,8 @@ fun CardList(
                 onClick = { onCardClick(countryName) },
             ) {
                 Text(
-                    text = countryName.name,
-                    style = MaterialTheme.typography.titleMedium
+                    text = countryName.flag,
+                    style = MaterialTheme.typography.displayLarge
                 )
             }
         }
