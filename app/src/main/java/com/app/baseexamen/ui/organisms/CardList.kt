@@ -16,7 +16,7 @@ import com.app.baseexamen.ui.molecules.SimpleCard
 @Composable
 fun CardList(
     items: List<CountryName>,
-    onCardClick: (CountryData) -> Unit
+    onCardClick: (CountryName) -> Unit
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(1),
@@ -26,12 +26,12 @@ fun CardList(
         items(
             items = items,
             key = { it.name }
-        ) { countryData ->
+        ) { countryName ->
             SimpleCard(
-                //onClick = { onCardClick(countryData) },
+                onClick = { onCardClick(countryName) },
             ) {
                 Text(
-                    text = countryData.name,
+                    text = countryName.name,
                     style = MaterialTheme.typography.titleMedium
                 )
             }

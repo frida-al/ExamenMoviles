@@ -10,20 +10,19 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.app.baseexamen.presentation.navigation.Screen
 import com.app.baseexamen.ui.organisms.CardList
 
 @Composable
 fun HomeScreen(
     navController: NavController,
     viewModel: HomeViewModel = hiltViewModel(),
-    //onNavigateToDetail: (String) -> Unit
 ) {
     val countries = viewModel.countries
 
     CardList(
         items = countries,
         onCardClick = { country ->
-           // onNavigateToDetail(country.country)
-        }
+            navController.navigate(Screen.Detail.createRoute(country.name))        }
     )
 }
