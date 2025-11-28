@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.app.baseexamen.domain.model.CountryData
 import com.app.baseexamen.domain.model.CountryName
@@ -16,7 +17,9 @@ import com.app.baseexamen.ui.molecules.SimpleCard
 @Composable
 fun CardList(
     items: List<CountryName>,
-    onCardClick: (CountryName) -> Unit
+    onCardClick: (CountryName) -> Unit,
+    modifier: Modifier = Modifier
+
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(1),
