@@ -20,13 +20,12 @@ import java.util.Properties
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
+
     @Provides
     @Singleton
-    fun provideRetrofit(@ApplicationContext context: Context): Retrofit {
-        val properties = Properties()
-        val inputStream = context.assets.open("local.properties")
-        properties.load(inputStream)
-        val apiKey = properties.getProperty("apiKey") ?: throw IllegalArgumentException("API key not found")
+    fun provideRetrofit(): Retrofit {
+        //YA SÉ QUE ESTO NO SE HACE PERO TOCÓ
+        val apiKey = "ZbfI10ry9XkXIfKHuyNsPA==dYsTm8wxG69RtCdQ"
 
         val interceptor = Interceptor { chain ->
             val request = chain.request().newBuilder()
@@ -45,6 +44,7 @@ object AppModule {
             .client(client)
             .build()
     }
+
 
     @Provides
     @Singleton
